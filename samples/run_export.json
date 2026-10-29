@@ -1,0 +1,758 @@
+{
+  "rfp_run_id": "RFP-20261028-165040-10A3F0",
+  "created_at": "2026-10-28T16:50:40+00:00",
+  "status": "COMPLETED",
+  "app_version": "1.0.0",
+  "llm": {
+    "provider": "Mock (no API key)",
+    "model": "mock-keyword-v1",
+    "temperature": 0.0
+  },
+  "ranking_mode": "ppi_first",
+  "ranking_rule": "Higher PPI \u2192 earlier submission date \u2192 higher experience \u2192 supplier name (A-Z)",
+  "criteria": [
+    {
+      "criterion_id": 1,
+      "name": "Technical Capability",
+      "description": "Architecture, integrations, scalability and technical fit with the requirement.",
+      "weight": 30.0,
+      "max_score": 10,
+      "is_active": 1
+    },
+    {
+      "criterion_id": 2,
+      "name": "Implementation Plan",
+      "description": "Timeline, milestones, staffing, delivery approach and risk plan.",
+      "weight": 20.0,
+      "max_score": 10,
+      "is_active": 1
+    },
+    {
+      "criterion_id": 3,
+      "name": "Commercial Value",
+      "description": "Pricing clarity, total cost of ownership, assumptions and value for money.",
+      "weight": 20.0,
+      "max_score": 10,
+      "is_active": 1
+    },
+    {
+      "criterion_id": 4,
+      "name": "Security & Compliance",
+      "description": "Security controls, certifications, data privacy and auditability.",
+      "weight": 20.0,
+      "max_score": 10,
+      "is_active": 1
+    },
+    {
+      "criterion_id": 5,
+      "name": "Support & Experience",
+      "description": "Support model, SLAs, similar past projects and client references.",
+      "weight": 10.0,
+      "max_score": 10,
+      "is_active": 1
+    }
+  ],
+  "formulas": {
+    "absolute_score": "sum(score / max_score * weight) over active criteria (0-100)",
+    "benchmark": "highest validated score for the criterion across all suppliers in the run",
+    "gap": "supplier score - benchmark (0 for the leader, otherwise negative)",
+    "relative_pct": "supplier score / benchmark * 100; 0 when the benchmark is 0",
+    "ppi": "sum(relative_pct * weight) / sum(weight)"
+  },
+  "benchmarks": [
+    {
+      "criterion_id": 1,
+      "name": "Technical Capability",
+      "benchmark": 9.0
+    },
+    {
+      "criterion_id": 2,
+      "name": "Implementation Plan",
+      "benchmark": 9.0
+    },
+    {
+      "criterion_id": 3,
+      "name": "Commercial Value",
+      "benchmark": 9.0
+    },
+    {
+      "criterion_id": 4,
+      "name": "Security & Compliance",
+      "benchmark": 9.0
+    },
+    {
+      "criterion_id": 5,
+      "name": "Support & Experience",
+      "benchmark": 9.0
+    }
+  ],
+  "suppliers": [
+    {
+      "supplier_name": "NexaWorks",
+      "submission_date": "2026-10-04",
+      "experience_rating": 4.0,
+      "absolute_score": 85.0,
+      "ppi": 94.44,
+      "final_rank": 1,
+      "llm_status": "ok",
+      "low_confidence": false,
+      "criteria": [
+        {
+          "criterion_id": 1,
+          "name": "Technical Capability",
+          "weight": 30.0,
+          "max_score": 10,
+          "score": 8.0,
+          "benchmark": 9.0,
+          "gap": -1.0,
+          "relative_pct": 88.89,
+          "weighted_points": 24.0,
+          "is_benchmark_leader": false,
+          "justification": "Strengths: microservices / service-oriented architecture, API gateway, REST APIs, pre-built connectors, SAP integration detail and 8 more.",
+          "evidence": "We propose a modular, cloud-hosted platform built on a service-oriented architecture with an API gateway and REST APIs.",
+          "evidence_verified": true,
+          "normalized": false,
+          "notes": []
+        },
+        {
+          "criterion_id": 2,
+          "name": "Implementation Plan",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 9.0,
+          "benchmark": 9.0,
+          "gap": 0.0,
+          "relative_pct": 100.0,
+          "weighted_points": 18.0,
+          "is_benchmark_leader": true,
+          "justification": "Strengths: phased plan, week-level timeline, numbered milestones, named team roles, integration lead and 11 more.",
+          "evidence": "Phase 1 Discovery (weeks 1-3): current-state assessment and requirements sign-off.",
+          "evidence_verified": true,
+          "normalized": false,
+          "notes": []
+        },
+        {
+          "criterion_id": 3,
+          "name": "Commercial Value",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 9.0,
+          "benchmark": 9.0,
+          "gap": 0.0,
+          "relative_pct": 100.0,
+          "weighted_points": 18.0,
+          "is_benchmark_leader": true,
+          "justification": "Strengths: itemised price table, fixed-price implementation, stated assumptions, payment milestones, total cost of ownership and 2 more.",
+          "evidence": "Item Price (USD) Platform subscription (3 years, 1,200 agents) $540,000 Implementation services (fixed price) $250,000 Integration (Salesforce, SAP, Genesys) $60,000 Training, change management and hypercare $40,000 Total contract value (3 years) $890,000 Pricing assumptions Prices exclude taxes.",
+          "evidence_verified": true,
+          "normalized": false,
+          "notes": []
+        },
+        {
+          "criterion_id": 4,
+          "name": "Security & Compliance",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 8.0,
+          "benchmark": 9.0,
+          "gap": -1.0,
+          "relative_pct": 88.89,
+          "weighted_points": 16.0,
+          "is_benchmark_leader": false,
+          "justification": "Strengths: ISO 27001, SOC 2 attestation, encryption at rest, encryption in transit, SSO / SAML and 7 more.",
+          "evidence": "NexaWorks is ISO/IEC 27001 certified and holds a SOC 2 Type I report; our SOC 2 Type II audit is in progress.",
+          "evidence_verified": true,
+          "normalized": false,
+          "notes": []
+        },
+        {
+          "criterion_id": 5,
+          "name": "Support & Experience",
+          "weight": 10.0,
+          "max_score": 10,
+          "score": 9.0,
+          "benchmark": 9.0,
+          "gap": 0.0,
+          "relative_pct": 100.0,
+          "weighted_points": 9.0,
+          "is_benchmark_leader": true,
+          "justification": "Strengths: 24x7 support, tiered support model, defined response times, service credits, dedicated account / success manager and 6 more.",
+          "evidence": "Support is 24x7x365 with a tiered L1/L2/L3 model and a dedicated customer success manager.",
+          "evidence_verified": true,
+          "normalized": false,
+          "notes": []
+        }
+      ],
+      "risks": [],
+      "overall_summary": "Keyword-based mock assessment. Strongest area: Implementation Plan; weakest area: Technical Capability.",
+      "warnings": [],
+      "rank_reason": "decided by PPI (higher): 94.44 vs 91.11"
+    },
+    {
+      "supplier_name": "Apex Systems",
+      "submission_date": "2026-10-05",
+      "experience_rating": 4.5,
+      "absolute_score": 82.0,
+      "ppi": 91.11,
+      "final_rank": 2,
+      "llm_status": "ok",
+      "low_confidence": false,
+      "criteria": [
+        {
+          "criterion_id": 1,
+          "name": "Technical Capability",
+          "weight": 30.0,
+          "max_score": 10,
+          "score": 9.0,
+          "benchmark": 9.0,
+          "gap": 0.0,
+          "relative_pct": 100.0,
+          "weighted_points": 27.0,
+          "is_benchmark_leader": true,
+          "justification": "Strengths: microservices / service-oriented architecture, container orchestration, API gateway, REST APIs, event-driven integration and 14 more.",
+          "evidence": "The platform uses a cloud-native microservices architecture deployed on Kubernetes across two availability zones with active-active failover.",
+          "evidence_verified": true,
+          "normalized": false,
+          "notes": []
+        },
+        {
+          "criterion_id": 2,
+          "name": "Implementation Plan",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 7.0,
+          "benchmark": 9.0,
+          "gap": -2.0,
+          "relative_pct": 77.78,
+          "weighted_points": 14.0,
+          "is_benchmark_leader": false,
+          "justification": "Strengths: phased plan, week-level timeline, numbered milestones, named team roles, risk register and 3 more.",
+          "evidence": "Delivery follows a 24-week plan in four phases: Discovery and Design (weeks 1-5), Build and Integration (weeks 6-15), Testing and UAT (weeks 16-20) and Rollout (weeks 21-24).",
+          "evidence_verified": true,
+          "normalized": false,
+          "notes": []
+        },
+        {
+          "criterion_id": 3,
+          "name": "Commercial Value",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 8.0,
+          "benchmark": 9.0,
+          "gap": -1.0,
+          "relative_pct": 88.89,
+          "weighted_points": 16.0,
+          "is_benchmark_leader": false,
+          "justification": "Strengths: itemised price table, fixed-price implementation, stated assumptions, payment milestones, total cost of ownership and 2 more. Concerns: premium pricing acknowledged.",
+          "evidence": "Item Price (USD) Platform licences (3 years, 1,200 agents) $720,000 Implementation services (fixed price) $360,000 Integration connectors (Salesforce, SAP, Genesys) $110,000 Training and change management $50,000 Total contract value (3 years) $1,240,000 Pricing assumptions Prices exclude applicable",
+          "evidence_verified": true,
+          "normalized": false,
+          "notes": []
+        },
+        {
+          "criterion_id": 4,
+          "name": "Security & Compliance",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 9.0,
+          "benchmark": 9.0,
+          "gap": 0.0,
+          "relative_pct": 100.0,
+          "weighted_points": 18.0,
+          "is_benchmark_leader": true,
+          "justification": "Strengths: ISO 27001, SOC 2 attestation, SOC 2 Type II report, encryption at rest, encryption in transit and 10 more.",
+          "evidence": "Apex Systems holds ISO/IEC 27001:2022 certification and a SOC 2 Type II report (audit period ending June 2026), both available under NDA.",
+          "evidence_verified": true,
+          "normalized": false,
+          "notes": []
+        },
+        {
+          "criterion_id": 5,
+          "name": "Support & Experience",
+          "weight": 10.0,
+          "max_score": 10,
+          "score": 7.0,
+          "benchmark": 9.0,
+          "gap": -2.0,
+          "relative_pct": 77.78,
+          "weighted_points": 7.0,
+          "is_benchmark_leader": false,
+          "justification": "Strengths: 24x7 support, defined response times, relevant retail experience, substantial track record, named references and 1 more.",
+          "evidence": "Support is provided 24x7 for Priority 1 incidents and during business hours (09:00-18:00 IST) for lower priorities.",
+          "evidence_verified": true,
+          "normalized": false,
+          "notes": []
+        }
+      ],
+      "risks": [
+        "Premium pricing acknowledged"
+      ],
+      "overall_summary": "Keyword-based mock assessment. Strongest area: Technical Capability; weakest area: Implementation Plan.",
+      "warnings": [],
+      "rank_reason": "decided by PPI (higher): 91.11 vs 45.56"
+    },
+    {
+      "supplier_name": "Orbit Digital",
+      "submission_date": "2026-10-06",
+      "experience_rating": 5.0,
+      "absolute_score": 41.0,
+      "ppi": 45.56,
+      "final_rank": 3,
+      "llm_status": "ok",
+      "low_confidence": false,
+      "criteria": [
+        {
+          "criterion_id": 1,
+          "name": "Technical Capability",
+          "weight": 30.0,
+          "max_score": 10,
+          "score": 2.0,
+          "benchmark": 9.0,
+          "gap": -7.0,
+          "relative_pct": 22.22,
+          "weighted_points": 6.0,
+          "is_benchmark_leader": false,
+          "justification": "Strengths: evidence of scale, load testing, omnichannel coverage, cloud hosting. Concerns: integration approach not yet defined, connectors only 'as needed'.",
+          "evidence": "Integration with Meridian's CRM, ERP and telephony systems will be finalised during discovery.",
+          "evidence_verified": true,
+          "normalized": false,
+          "notes": []
+        },
+        {
+          "criterion_id": 2,
+          "name": "Implementation Plan",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 4.0,
+          "benchmark": 9.0,
+          "gap": -5.0,
+          "relative_pct": 44.44,
+          "weighted_points": 8.0,
+          "is_benchmark_leader": false,
+          "justification": "Strengths: week-level timeline, named team roles, risk register, UAT, change management. Concerns: approximate timeline, milestone dates undefined.",
+          "evidence": "We expect delivery to take approximately 22 weeks, structured as discovery (weeks 1-4), configuration (weeks 5-14), testing (weeks 15-19) and rollout (weeks 20-22).",
+          "evidence_verified": true,
+          "normalized": false,
+          "notes": []
+        },
+        {
+          "criterion_id": 3,
+          "name": "Commercial Value",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 5.0,
+          "benchmark": 9.0,
+          "gap": -4.0,
+          "relative_pct": 55.56,
+          "weighted_points": 10.0,
+          "is_benchmark_leader": false,
+          "justification": "Strengths: itemised price table, fixed-price implementation, stated assumptions, payment milestones. Concerns: cost items are estimates, price may change.",
+          "evidence": "Item Price (USD) Orbit CX licences (3 years, 1,200 agents) $600,000 Implementation services (fixed price) $260,000 Training $30,000 Integration (estimate, to be confirmed) $50,000 Total contract value (3 years) $940,000 Pricing assumptions Prices exclude taxes.",
+          "evidence_verified": true,
+          "normalized": false,
+          "notes": []
+        },
+        {
+          "criterion_id": 4,
+          "name": "Security & Compliance",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 4.0,
+          "benchmark": 9.0,
+          "gap": -5.0,
+          "relative_pct": 44.44,
+          "weighted_points": 8.0,
+          "is_benchmark_leader": false,
+          "justification": "Strengths: ISO 27001, encryption at rest, role-based access control, GDPR.",
+          "evidence": "Orbit Digital is ISO/IEC 27001 certified.",
+          "evidence_verified": true,
+          "normalized": false,
+          "notes": []
+        },
+        {
+          "criterion_id": 5,
+          "name": "Support & Experience",
+          "weight": 10.0,
+          "max_score": 10,
+          "score": 9.0,
+          "benchmark": 9.0,
+          "gap": 0.0,
+          "relative_pct": 100.0,
+          "weighted_points": 9.0,
+          "is_benchmark_leader": true,
+          "justification": "Strengths: 24x7 support, tiered support model, defined response times, dedicated account / success manager, relevant retail experience and 3 more.",
+          "evidence": "Support is 24x7 with a tiered L1/L2/L3 model and a named account manager.",
+          "evidence_verified": true,
+          "normalized": false,
+          "notes": []
+        }
+      ],
+      "risks": [
+        "Approximate timeline",
+        "Connectors only 'as needed'",
+        "Cost items are estimates",
+        "Integration approach not yet defined",
+        "Milestone dates undefined",
+        "Price may change"
+      ],
+      "overall_summary": "Keyword-based mock assessment. Strongest area: Support & Experience; weakest area: Technical Capability.",
+      "warnings": [],
+      "rank_reason": "decided by experience rating (higher): 5 vs 3.5"
+    },
+    {
+      "supplier_name": "Zenith Consulting",
+      "submission_date": "2026-10-06",
+      "experience_rating": 3.5,
+      "absolute_score": 41.0,
+      "ppi": 45.56,
+      "final_rank": 4,
+      "llm_status": "ok",
+      "low_confidence": false,
+      "criteria": [
+        {
+          "criterion_id": 1,
+          "name": "Technical Capability",
+          "weight": 30.0,
+          "max_score": 10,
+          "score": 2.0,
+          "benchmark": 9.0,
+          "gap": -7.0,
+          "relative_pct": 22.22,
+          "weighted_points": 6.0,
+          "is_benchmark_leader": false,
+          "justification": "Strengths: evidence of scale, load testing, omnichannel coverage, cloud hosting. Concerns: integration approach not yet defined, connectors only 'as needed'.",
+          "evidence": "Integration with Meridian's CRM, ERP and telephony systems will be finalised during discovery.",
+          "evidence_verified": true,
+          "normalized": false,
+          "notes": []
+        },
+        {
+          "criterion_id": 2,
+          "name": "Implementation Plan",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 4.0,
+          "benchmark": 9.0,
+          "gap": -5.0,
+          "relative_pct": 44.44,
+          "weighted_points": 8.0,
+          "is_benchmark_leader": false,
+          "justification": "Strengths: week-level timeline, named team roles, risk register, UAT, change management. Concerns: approximate timeline, milestone dates undefined.",
+          "evidence": "We expect delivery to take approximately 22 weeks, structured as discovery (weeks 1-4), configuration (weeks 5-14), testing (weeks 15-19) and rollout (weeks 20-22).",
+          "evidence_verified": true,
+          "normalized": false,
+          "notes": []
+        },
+        {
+          "criterion_id": 3,
+          "name": "Commercial Value",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 5.0,
+          "benchmark": 9.0,
+          "gap": -4.0,
+          "relative_pct": 55.56,
+          "weighted_points": 10.0,
+          "is_benchmark_leader": false,
+          "justification": "Strengths: itemised price table, fixed-price implementation, stated assumptions, payment milestones. Concerns: cost items are estimates, price may change.",
+          "evidence": "Item Price (USD) Orbit CX licences (3 years, 1,200 agents) $600,000 Implementation services (fixed price) $260,000 Training $30,000 Integration (estimate, to be confirmed) $50,000 Total contract value (3 years) $940,000 Pricing assumptions Prices exclude taxes.",
+          "evidence_verified": true,
+          "normalized": false,
+          "notes": []
+        },
+        {
+          "criterion_id": 4,
+          "name": "Security & Compliance",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 4.0,
+          "benchmark": 9.0,
+          "gap": -5.0,
+          "relative_pct": 44.44,
+          "weighted_points": 8.0,
+          "is_benchmark_leader": false,
+          "justification": "Strengths: ISO 27001, encryption at rest, role-based access control, GDPR.",
+          "evidence": "Orbit Digital is ISO/IEC 27001 certified.",
+          "evidence_verified": true,
+          "normalized": false,
+          "notes": []
+        },
+        {
+          "criterion_id": 5,
+          "name": "Support & Experience",
+          "weight": 10.0,
+          "max_score": 10,
+          "score": 9.0,
+          "benchmark": 9.0,
+          "gap": 0.0,
+          "relative_pct": 100.0,
+          "weighted_points": 9.0,
+          "is_benchmark_leader": true,
+          "justification": "Strengths: 24x7 support, tiered support model, defined response times, dedicated account / success manager, relevant retail experience and 3 more.",
+          "evidence": "Support is 24x7 with a tiered L1/L2/L3 model and a named account manager.",
+          "evidence_verified": true,
+          "normalized": false,
+          "notes": []
+        }
+      ],
+      "risks": [
+        "Approximate timeline",
+        "Connectors only 'as needed'",
+        "Cost items are estimates",
+        "Integration approach not yet defined",
+        "Milestone dates undefined",
+        "Price may change"
+      ],
+      "overall_summary": "Keyword-based mock assessment. Strongest area: Support & Experience; weakest area: Technical Capability.",
+      "warnings": [],
+      "rank_reason": "decided by PPI (higher): 45.56 vs 40.00"
+    },
+    {
+      "supplier_name": "BrightPath Tech",
+      "submission_date": "2026-10-02",
+      "experience_rating": 2.0,
+      "absolute_score": 36.0,
+      "ppi": 40.0,
+      "final_rank": 5,
+      "llm_status": "ok",
+      "low_confidence": false,
+      "criteria": [
+        {
+          "criterion_id": 1,
+          "name": "Technical Capability",
+          "weight": 30.0,
+          "max_score": 10,
+          "score": 3.0,
+          "benchmark": 9.0,
+          "gap": -6.0,
+          "relative_pct": 33.33,
+          "weighted_points": 9.0,
+          "is_benchmark_leader": false,
+          "justification": "Strengths: REST APIs, telephony integration, omnichannel coverage, cloud hosting, CRM integration. Concerns: key integrations deferred to the project, limited feature set.",
+          "evidence": "Integration with SAP and Genesys can be built during the project using our API.",
+          "evidence_verified": true,
+          "normalized": false,
+          "notes": []
+        },
+        {
+          "criterion_id": 2,
+          "name": "Implementation Plan",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 3.0,
+          "benchmark": 9.0,
+          "gap": -6.0,
+          "relative_pct": 33.33,
+          "weighted_points": 6.0,
+          "is_benchmark_leader": false,
+          "justification": "Strengths: week-level timeline, iterative sprints, defined go-live point. Concerns: plan to be agreed after contract.",
+          "evidence": "We work in two-week sprints and will agree the detailed plan with Meridian after contract signature.",
+          "evidence_verified": true,
+          "normalized": false,
+          "notes": []
+        },
+        {
+          "criterion_id": 3,
+          "name": "Commercial Value",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 9.0,
+          "benchmark": 9.0,
+          "gap": 0.0,
+          "relative_pct": 100.0,
+          "weighted_points": 18.0,
+          "is_benchmark_leader": true,
+          "justification": "Strengths: itemised price table, fixed-price implementation, stated assumptions, payment milestones, total cost of ownership and 2 more.",
+          "evidence": "Item Price (USD) BrightDesk subscription (3 years, 1,200 agents) $396,000 Configuration and setup (fixed price) $129,000 Training (online) $20,000 Integrations (SAP, Genesys) $40,000 Total contract value (3 years) $585,000 Pricing assumptions All-inclusive fixed price for the scope described.",
+          "evidence_verified": true,
+          "normalized": false,
+          "notes": []
+        },
+        {
+          "criterion_id": 4,
+          "name": "Security & Compliance",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 1.0,
+          "benchmark": 9.0,
+          "gap": -8.0,
+          "relative_pct": 11.11,
+          "weighted_points": 2.0,
+          "is_benchmark_leader": false,
+          "justification": "Strengths: ISO 27001. Concerns: certification only planned, relies on generic 'best practices', relies on hosting provider's controls, security detail only on request.",
+          "evidence": "We are planning to begin ISO 27001 certification next year.",
+          "evidence_verified": true,
+          "normalized": false,
+          "notes": []
+        },
+        {
+          "criterion_id": 5,
+          "name": "Support & Experience",
+          "weight": 10.0,
+          "max_score": 10,
+          "score": 1.0,
+          "benchmark": 9.0,
+          "gap": -8.0,
+          "relative_pct": 11.11,
+          "weighted_points": 1.0,
+          "is_benchmark_leader": false,
+          "justification": "Strengths: knowledge base. Concerns: business-hours-only support, recently founded / limited track record, references not provided.",
+          "evidence": "Support is available by email during business hours, Monday to Friday.",
+          "evidence_verified": true,
+          "normalized": false,
+          "notes": []
+        }
+      ],
+      "risks": [
+        "Business-hours-only support",
+        "Certification only planned",
+        "Key integrations deferred to the project",
+        "Limited feature set",
+        "Plan to be agreed after contract",
+        "Recently founded / limited track record",
+        "References not provided",
+        "Relies on generic 'best practices'",
+        "Relies on hosting provider's controls",
+        "Security detail only on request"
+      ],
+      "overall_summary": "Keyword-based mock assessment. Strongest area: Commercial Value; weakest area: Security & Compliance.",
+      "warnings": [],
+      "rank_reason": "lowest position after applying the sort order"
+    }
+  ],
+  "tie_break_explanation": [
+    "#1 NexaWorks above #2 Apex Systems: decided by PPI (higher): 94.44 vs 91.11.",
+    "#2 Apex Systems above #3 Orbit Digital: decided by PPI (higher): 91.11 vs 45.56.",
+    "#3 Orbit Digital above #4 Zenith Consulting: PPI tied at 45.56, submission date tied at 2026-10-06; decided by experience rating (higher): 5 vs 3.5.",
+    "#4 Zenith Consulting above #5 BrightPath Tech: decided by PPI (higher): 45.56 vs 40.00."
+  ],
+  "warnings": [],
+  "agent_trace": [
+    {
+      "step": 1,
+      "actor": "Orchestrator",
+      "action": "Create batch",
+      "detail": "RFP-20261028-165040-10A3F0: 5 supplier(s), 5 active criteria, mode=ppi_first",
+      "duration_ms": 1.6
+    },
+    {
+      "step": 2,
+      "actor": "Document Tool",
+      "action": "Extract text",
+      "detail": "Apex Systems: 2 page(s), 4,412 chars",
+      "duration_ms": 4.7
+    },
+    {
+      "step": 3,
+      "actor": "Evaluation Agent",
+      "action": "Score criteria",
+      "detail": "Apex Systems: ok after 1 attempt(s)",
+      "duration_ms": 7.4
+    },
+    {
+      "step": 4,
+      "actor": "Validation Tool",
+      "action": "Validate & normalise",
+      "detail": "Apex Systems: 5 criteria, 0 normalised, 0 warning(s)",
+      "duration_ms": 0.8
+    },
+    {
+      "step": 5,
+      "actor": "Document Tool",
+      "action": "Extract text",
+      "detail": "BrightPath Tech: 2 page(s), 2,572 chars",
+      "duration_ms": 3.0
+    },
+    {
+      "step": 6,
+      "actor": "Evaluation Agent",
+      "action": "Score criteria",
+      "detail": "BrightPath Tech: ok after 1 attempt(s)",
+      "duration_ms": 3.0
+    },
+    {
+      "step": 7,
+      "actor": "Validation Tool",
+      "action": "Validate & normalise",
+      "detail": "BrightPath Tech: 5 criteria, 0 normalised, 0 warning(s)",
+      "duration_ms": 0.5
+    },
+    {
+      "step": 8,
+      "actor": "Document Tool",
+      "action": "Extract text",
+      "detail": "NexaWorks: 3 page(s), 4,569 chars",
+      "duration_ms": 3.8
+    },
+    {
+      "step": 9,
+      "actor": "Evaluation Agent",
+      "action": "Score criteria",
+      "detail": "NexaWorks: ok after 1 attempt(s)",
+      "duration_ms": 4.1
+    },
+    {
+      "step": 10,
+      "actor": "Validation Tool",
+      "action": "Validate & normalise",
+      "detail": "NexaWorks: 5 criteria, 0 normalised, 0 warning(s)",
+      "duration_ms": 0.8
+    },
+    {
+      "step": 11,
+      "actor": "Document Tool",
+      "action": "Extract text",
+      "detail": "Orbit Digital: 2 page(s), 3,120 chars",
+      "duration_ms": 3.2
+    },
+    {
+      "step": 12,
+      "actor": "Evaluation Agent",
+      "action": "Score criteria",
+      "detail": "Orbit Digital: ok after 1 attempt(s)",
+      "duration_ms": 3.5
+    },
+    {
+      "step": 13,
+      "actor": "Validation Tool",
+      "action": "Validate & normalise",
+      "detail": "Orbit Digital: 5 criteria, 0 normalised, 0 warning(s)",
+      "duration_ms": 0.6
+    },
+    {
+      "step": 14,
+      "actor": "Document Tool",
+      "action": "Extract text",
+      "detail": "Zenith Consulting: 2 page(s), 3,180 chars",
+      "duration_ms": 3.1
+    },
+    {
+      "step": 15,
+      "actor": "Evaluation Agent",
+      "action": "Score criteria",
+      "detail": "Zenith Consulting: ok after 1 attempt(s)",
+      "duration_ms": 3.4
+    },
+    {
+      "step": 16,
+      "actor": "Validation Tool",
+      "action": "Validate & normalise",
+      "detail": "Zenith Consulting: 5 criteria, 0 normalised, 0 warning(s)",
+      "duration_ms": 0.6
+    },
+    {
+      "step": 17,
+      "actor": "Ranking Tool",
+      "action": "Score, benchmark, rank",
+      "detail": "Winner: NexaWorks (PPI 94.44, score 85.00)",
+      "duration_ms": 0.2
+    },
+    {
+      "step": 18,
+      "actor": "Orchestrator",
+      "action": "Persist results",
+      "detail": "Saved 5 supplier result(s) to SQLite",
+      "duration_ms": 2.9
+    }
+  ]
+}
